@@ -1,0 +1,27 @@
+{% include 'base.html' %}
+{% block content %}
+    <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Available Polls</h3>
+            </div>
+
+            <ul class="list-group">
+
+                    {% for obj in objects %}
+                        <li class="list-group-item">
+                        <strong>{{ obj.question_text }}</strong>
+                        <span class="pull-right">
+                            <a href='{{ obj.get_absolute_url }}' class="btn btn-info btn-xs">Vote</a> &nbsp;
+                            <a href='{{ obj.get_absolute_url_results }}' class="btn btn-default btn-xs">View Results</a> &nbsp;
+                        </span>
+                        </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

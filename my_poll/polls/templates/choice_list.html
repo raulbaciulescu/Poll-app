@@ -1,0 +1,47 @@
+{% include 'base.html' %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Cast Your Vote</h3>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2>{{ question.question_text }}</h2>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <hr />
+                    {% if objects.0 == True %}
+                        <p> This question has no choice! </p>
+                    {% else %}
+
+                        {% for obj in objects %}
+                            <form action="" method="POST"> {% csrf_token %}
+                                <div class="form-group">
+                                    <div class="radio">
+                                        <label for="choice{{ obj.id }}">
+                                            <input type="radio" name="choice" id="choice{{ obj.id }}" value='{{ obj.id }}'>
+                                            {{ obj.choice_text }}
+                                        </label><br>
+                                    </div>
+                                </div>
+                        {% endfor %}
+                         <input type="submit" value="Vote" class="btn btn-info">
+                            </form>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

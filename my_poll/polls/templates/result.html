@@ -1,0 +1,37 @@
+{% include 'base.html' %}
+
+{% block content %}
+{#    <p> {{ question }}</p>#}
+{#    {% for obj in objects %}#}
+{#        <p> {{ forloop.counter }} -- {{ obj.choice_text }}</p>#}
+{#        <p> Votes: {{ obj.votes }}</p>#}
+{#        <p>----------------------</p>#}
+{#    {% endfor %}#}
+{#    <a href="/polls/questions/"> Back to the questions</a>#}
+    <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Poll Result</h3>
+            </div>
+
+            <div class="panel-body">
+                <h3>{{ question }}</h3>
+            </div>
+
+            <ul class="list-group">
+                {% for obj in objects %}
+                    <li class="list-group-item">{{ obj.choice_text }} &mdash; <strong> {{ obj.votes }}</strong></li>
+                {% endfor %}
+            </ul>
+
+            <div class="panel-footer">
+                Total &mdash; <strong>{{ question.sum_of_votes }}</strong>
+            </div>
+
+        </div>
+    </div>
+    </div>
+{% endblock %}
+
+
